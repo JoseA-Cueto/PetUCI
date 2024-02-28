@@ -9,7 +9,8 @@ namespace PetUci.MappingProfile
     {
         public MappingProfile()
         {
-            CreateMap<Product, ProductViewModel>();
+            CreateMap<Product, ProductViewModel>()
+            .ForMember(dest => dest.ImagePath, opt => opt.MapFrom(src => src.ImageFile.PhysicalPath));
             CreateMap<ProductViewModel, Product>();
 
             CreateMap<Pet, PetViewModel>();
@@ -32,6 +33,9 @@ namespace PetUci.MappingProfile
 
             CreateMap<Forum, ForumViewModel>();
             CreateMap<ForumViewModel, Forum>();
+
+            CreateMap<ImageFiles, ImageFilesViewModel>();
+            CreateMap<ImageFilesViewModel, ImageFiles>();
 
         }
     }

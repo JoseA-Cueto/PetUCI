@@ -17,6 +17,7 @@ namespace PetUci.Context
         public DbSet<Disease> Diseases { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
         public DbSet<Forum> Forums { get; set; }
+        public DbSet<ImageFiles> ImageFiles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()

@@ -11,6 +11,14 @@ namespace PetUci.ServiceExtensions
         {
             services.AddScoped<IPetRepositories, PetRepositories>();
             services.AddScoped<IPetService, PetService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IEncryptionService, EncryptionService>();
+
+            services.AddScoped<IProductRepositories, ProductRepository>();
+            services.AddScoped<IProductService, ProductService>();
         }
     }
 }
