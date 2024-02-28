@@ -52,6 +52,10 @@ namespace PetUci.Controllers
                     var claims = new ClaimsIdentity();
 
                     claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.nombre));
+
+                    // Agregar el rol del usuario como un claim
+                    claims.AddClaim(new Claim(ClaimTypes.Role, user.rol));
+
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = claims,
@@ -68,13 +72,13 @@ namespace PetUci.Controllers
                     return StatusCode(401, new { token = "" });
                 }
             }
-
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al validar al usuario");
                 return StatusCode(500);
             }
         }
+
 
         [HttpGet("GetUserById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

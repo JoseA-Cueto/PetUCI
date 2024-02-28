@@ -34,7 +34,7 @@ namespace PetUci.Services
             string encryptedPassword = _encryptionService.EncryptPassword(userViewModel.contraseña);
 
 
-            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.nombre == userViewModel.nombre && u.contraseña == encryptedPassword);
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.nombre == userViewModel.nombre && u.contraseña == encryptedPassword && userViewModel.correoElectronico == u.correoElectronico);
 
             return entity;
         }
