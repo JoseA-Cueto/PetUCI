@@ -1,5 +1,6 @@
 ﻿using PetUci.InterfacesBussines;
 using PetUci.InterfacesDataBase;
+using PetUci.Models;
 using PetUci.Repositories;
 using PetUci.Services;
 
@@ -19,6 +20,10 @@ namespace PetUci.ServiceExtensions
 
             services.AddScoped<IProductRepositories, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
+
+            services.AddScoped<IImageFileRepository, ImageFileRepository>();
+            services.AddScoped<IImageFileService, ImageFileService>();
+
         }
     }
 }
