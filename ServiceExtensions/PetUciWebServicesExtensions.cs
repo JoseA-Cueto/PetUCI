@@ -24,6 +24,21 @@ namespace PetUci.ServiceExtensions
             services.AddScoped<IImageFileRepository, ImageFileRepository>();
             services.AddScoped<IImageFileService, ImageFileService>();
 
+
+            services.AddScoped<IRolRepository,RolRepository >();
+            services.AddScoped<IRolService,RolService >();
+
+            services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+            services.AddScoped<ITreatmentService, TreatmentService>();
+
+            services.AddScoped<IForumRepository, ForumRepository>();
+            services.AddScoped<IForumService, ForumService>();
+
+            services.AddScoped<IVaccineRepository, VaccineRepository>();
+            services.AddScoped<IVaccineService, VaccineService>();
+
+
+
         }
     }
 }
