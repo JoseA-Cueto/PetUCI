@@ -1,0 +1,28 @@
+{
+  "name": "petuci",
+  "version": "1.0.0",
+  "description": "Agencia de adopcion de mascota y compra d productos para mascotas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@vue/compiler-sfc": "^3.4.21",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.10.0",
+    "vue-loader": "^17.3.1",
+    "vue-style-loader": "^4.1.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
