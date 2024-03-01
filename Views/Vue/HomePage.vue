@@ -165,7 +165,6 @@
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
   </div>
     <div class="carousel-inner ">
-      <div class="d-flex justify-content-evenly">
       <div class="carousel-item active" data-bs-interval="10000">
         <div class="row">
           <div class="col-md-4">
@@ -234,7 +233,6 @@
           </div>
         </div>
       </div>
-    </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducts" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -251,7 +249,7 @@
 
   </template>
   <style>
-    body{
+    /*body{
       background-color: #f3f7fa;
-    }
+    }*/
 </style>
