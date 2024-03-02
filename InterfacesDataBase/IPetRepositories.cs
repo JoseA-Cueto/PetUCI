@@ -4,10 +4,10 @@ namespace PetUci.InterfacesDataBase
 {
     public interface IPetRepositories 
     {
-        Task AddAsync(Pet entity);
-        Task<Pet> Delete(int id);
-        Task<List<Pet>> GetAll();
-        Task<Pet> GetOne(int id);
-        Task UpdateAsync(Pet entity);
+        Task<IEnumerable<Pet>> GetPetsAsync();
+        Task<Pet> GetPetByIdAsync(int petId);
+        Task AddPetAsync(Pet pet);
+        Task UpdatePetAsync(Pet pet);
+        Task DeletePetAsync(int petId);
     }
 }

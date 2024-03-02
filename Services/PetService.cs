@@ -19,35 +19,35 @@ namespace PetUci.Services
 
         public async Task<IEnumerable<PetViewModel>> GetPetAsync()
         {
-            var pet = await _petRepository.GetAll();
+            var pet = await _petRepository.GetPetsAsync();
             return _mapper.Map<IEnumerable<PetViewModel>>(pet);
         }
 
         public async Task<PetViewModel> GetPetByIdAsync(int petId)
         {
-            var pet = await _petRepository.GetOne(petId);
+            var pet = await _petRepository.GetPetByIdAsync(petId);
             return _mapper.Map<PetViewModel>(pet);
         }
 
         public async Task AddPetAsync(PetViewModel petViewModel)
         {
             var pet = _mapper.Map<Pet>(petViewModel);
-            await _petRepository.AddAsync(pet);
+            await _petRepository.AddPetAsync(pet);
         }
 
         public async Task UpdatePetAsync(PetViewModel petViewModel)
         {
-            var existingPet = await _petRepository.GetOne(petViewModel.id);
+            var existingPet = await _petRepository.GetPetByIdAsync(petViewModel.id);
             if (existingPet != null)
             {
                 _mapper.Map(petViewModel, existingPet);
-                await _petRepository.UpdateAsync(existingPet);
+                await _petRepository.UpdatePetAsync(existingPet);
             }
         }
 
         public async Task DeletePetAsync(int petId)
         {
-            await _petRepository.Delete(petId);
+            await _petRepository.DeletePetAsync(petId);
         }
     }
 }

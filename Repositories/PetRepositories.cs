@@ -14,25 +14,36 @@ namespace PetUci.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(Pet entity) => await _context.AddAsync(entity);
-
-
-        public async Task<Pet> Delete(int id)
+        public async Task<IEnumerable<Pet>> GetPetsAsync()
         {
-            var Pet = await _context.Pets.FindAsync(id);
-            _context.Remove(Pet!);
-            return Pet!;
+            return await _context.Pets.ToListAsync();
         }
 
-        public Task<List<Pet>> GetAll() => _context.Pets.ToListAsync();
-
-        public Task<Pet> GetOne(int id) => _context.Pets.FindAsync(id).AsTask()!;
-
-
-        public Task UpdateAsync(Pet entity)
+        public async Task<Pet> GetPetByIdAsync(int petId)
         {
-            _context.Update(entity);
-            return Task.CompletedTask;
+            return await _context.Pets.FindAsync(petId);
+        }
+
+        public async Task AddPetAsync(Pet pet)
+        {
+            _context.Pets.Add(pet);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdatePetAsync(Pet pet)
+        {
+            _context.Entry(pet).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeletePetAsync(int petId)
+        {
+            var pet = await _context.Pets.FindAsync(petId);
+            if (pet != null)
+            {
+                _context.Pets.Remove(pet);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

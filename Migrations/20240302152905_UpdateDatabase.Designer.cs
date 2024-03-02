@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetUci.Context;
 
@@ -11,9 +12,10 @@ using PetUci.Context;
 namespace PetUci.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240302152905_UpdateDatabase")]
+    partial class UpdateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,18 +32,19 @@ namespace PetUci.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("idTreatment")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("treatmentid")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("treatmentid");
+                    b.HasIndex("idTreatment")
+                        .IsUnique();
 
-                    b.ToTable("Diseases", (string)null);
+                    b.ToTable("Diseases");
                 });
 
             modelBuilder.Entity("PetUci.Models.Forum", b =>
@@ -59,11 +62,14 @@ namespace PetUci.Migrations
                     b.Property<int>("idUser")
                         .HasColumnType("int");
 
+                    b.Property<int>("userid")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
-                    b.HasIndex("idUser");
+                    b.HasIndex("userid");
 
-                    b.ToTable("Forums", (string)null);
+                    b.ToTable("Forums");
                 });
 
             modelBuilder.Entity("PetUci.Models.ImageFiles", b =>
@@ -104,7 +110,7 @@ namespace PetUci.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("ImageFiles", (string)null);
+                    b.ToTable("ImageFiles");
                 });
 
             modelBuilder.Entity("PetUci.Models.Pet", b =>
@@ -129,7 +135,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("PetUci.Models.Product", b =>
@@ -156,7 +162,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("PetUci.Models.Rol", b =>
@@ -173,7 +179,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("PetUci.Models.Treatment", b =>
@@ -197,9 +203,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("idDisease");
-
-                    b.ToTable("Treatments", (string)null);
+                    b.ToTable("Treatments");
                 });
 
             modelBuilder.Entity("PetUci.Models.User", b =>
@@ -226,14 +230,14 @@ namespace PetUci.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("rolId")
+                    b.Property<int>("rolID")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("rolId");
+                    b.HasIndex("rolID");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PetUci.Models.Vaccine", b =>
@@ -253,14 +257,14 @@ namespace PetUci.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Vaccines", (string)null);
+                    b.ToTable("Vaccines");
                 });
 
             modelBuilder.Entity("PetUci.Models.Disease", b =>
                 {
                     b.HasOne("PetUci.Models.Treatment", "treatment")
-                        .WithMany()
-                        .HasForeignKey("treatmentid")
+                        .WithOne("disease")
+                        .HasForeignKey("PetUci.Models.Disease", "idTreatment")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -271,7 +275,7 @@ namespace PetUci.Migrations
                 {
                     b.HasOne("PetUci.Models.User", "user")
                         .WithMany("Forums")
-                        .HasForeignKey("idUser")
+                        .HasForeignKey("userid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -289,22 +293,11 @@ namespace PetUci.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("PetUci.Models.Treatment", b =>
-                {
-                    b.HasOne("PetUci.Models.Disease", "disease")
-                        .WithMany()
-                        .HasForeignKey("idDisease")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("disease");
-                });
-
             modelBuilder.Entity("PetUci.Models.User", b =>
                 {
                     b.HasOne("PetUci.Models.Rol", "rolObj")
                         .WithMany("usuarios")
-                        .HasForeignKey("rolId")
+                        .HasForeignKey("rolID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -320,6 +313,12 @@ namespace PetUci.Migrations
             modelBuilder.Entity("PetUci.Models.Rol", b =>
                 {
                     b.Navigation("usuarios");
+                });
+
+            modelBuilder.Entity("PetUci.Models.Treatment", b =>
+                {
+                    b.Navigation("disease")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PetUci.Models.User", b =>

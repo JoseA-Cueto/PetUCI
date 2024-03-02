@@ -16,15 +16,17 @@ namespace PetUci.Controllers
         public class PetController : ControllerBase
         {
             private readonly IPetService _petService;
+            private readonly ILogger<PetController> _logger;
 
-            public PetController(IPetService petService)
+            public PetController(IPetService petService, ILogger<PetController> logger)
             {
                 _petService = petService;
+                _logger = logger;
             }
 
             [HttpGet("GetAllPets")]
-           
-            public async Task<IActionResult> GetAllPets()
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            public async Task<ActionResult<IEnumerable<PetViewModel>>> GetAllPets()
             {
                 try
                 {
@@ -33,84 +35,97 @@ namespace PetUci.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    _logger.LogError(ex, "Error al obtener todas las macotas");
+                    return StatusCode(500);
                 }
             }
 
             [HttpGet("GetPetById/{id}")]
-            public async Task<IActionResult> GetPetById(int id)
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status404NotFound)]
+            public async Task<ActionResult<PetViewModel>> GetPetById(int id)
             {
                 try
                 {
                     var pet = await _petService.GetPetByIdAsync(id);
                     if (pet == null)
-                        return NotFound($"Pet with id {id} was not found.");
-
+                    {
+                        return NotFound();
+                    }
                     return Ok(pet);
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    _logger.LogError(ex, $"Error al obtener la mascota con ID: {id}");
+                    return StatusCode(500);
                 }
             }
 
             [HttpPost("AddPet")]
-            
+            [ProducesResponseType(StatusCodes.Status201Created)]
+            [ProducesResponseType(StatusCodes.Status500InternalServerError)]
             public async Task<IActionResult> AddPet([FromBody] PetViewModel petViewModel)
             {
                 try
                 {
-                    if (petViewModel == null)
-                        return BadRequest("Pet data is null.");
-
                     await _petService.AddPetAsync(petViewModel);
-                    return CreatedAtAction(nameof(GetPetById), new { id = petViewModel.id }, petViewModel);
+                    return StatusCode(201);
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    _logger.LogError(ex, "Error al agregar una nueva mascota");
+                    return StatusCode(500);
                 }
             }
 
             [HttpPut("UpdatePet/{id}")]
- 
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status404NotFound)]
+            [ProducesResponseType(StatusCodes.Status500InternalServerError)]
             public async Task<IActionResult> UpdatePet(int id, [FromBody] PetViewModel petViewModel)
             {
                 try
                 {
                     var existingPet = await _petService.GetPetByIdAsync(id);
                     if (existingPet == null)
-                        return NotFound($"Pet with id {id} was not found.");
+                    {
+                        return NotFound();
+                    }
 
-                    petViewModel.id = id;
                     await _petService.UpdatePetAsync(petViewModel);
-                    return NoContent();
+                    return Ok();
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    _logger.LogError(ex, $"Error al actualizar la mascota con ID: {id}");
+                    return StatusCode(500);
                 }
             }
 
             [HttpDelete("DeletePet/{id}")]
-           
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status404NotFound)]
+            [ProducesResponseType(StatusCodes.Status500InternalServerError)]
             public async Task<IActionResult> DeletePet(int id)
             {
                 try
                 {
                     var existingPet = await _petService.GetPetByIdAsync(id);
                     if (existingPet == null)
-                        return NotFound($"Pet with id {id} was not found.");
+                    {
+                        return NotFound();
+                    }
 
                     await _petService.DeletePetAsync(id);
-                    return NoContent();
+                    return Ok();
                 }
                 catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    _logger.LogError(ex, $"Error al eliminar la mascota con ID: {id}");
+                    return StatusCode(500);
                 }
             }
         }
-    }
 
+    }
 }
