@@ -2545,23 +2545,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\VPK\\.nuget\\packages\\": {},
+    "C:\\Users\\Willy\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VPK\\source\\repos\\PetUci\\PetUci.csproj",
+      "projectUniqueName": "E:\\Mis Cosas\\Proyectos\\PetUCI\\PetUci.csproj",
       "projectName": "PetUci",
-      "projectPath": "C:\\Users\\VPK\\source\\repos\\PetUci\\PetUci.csproj",
-      "packagesPath": "C:\\Users\\VPK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VPK\\source\\repos\\PetUci\\obj\\",
+      "projectPath": "E:\\Mis Cosas\\Proyectos\\PetUCI\\PetUci.csproj",
+      "packagesPath": "C:\\Users\\Willy\\.nuget\\packages\\",
+      "outputPath": "E:\\Mis Cosas\\Proyectos\\PetUCI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\VPK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Willy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2570,7 +2570,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2635,6 +2634,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.14, 7.0.14]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -2643,7 +2660,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

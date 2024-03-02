@@ -12,7 +12,7 @@ namespace PetUci.Controllers
     namespace PetUci.Controllers
     {
         [ApiController]
-        [Route("api/[controller]")]
+        [Route("api/Pet")]
         public class PetController : ControllerBase
         {
             private readonly IPetService _petService;
