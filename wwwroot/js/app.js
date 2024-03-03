@@ -6,6 +6,8 @@ import navBar from "../../Views/Vue/navBar.vue";
 import footBar from "../../Views/Vue/footBar.vue";
 import petPage from "../../Views/Vue/petPage.vue";
 import productPage from "../../Views/Vue/productPage.vue";
+import logInPage from "../../Views/Vue/logInPage.vue";
+import enfermedades from "../../Views/Vue/enfermedades.vue";
 
 const app = createApp({
     components:{
@@ -14,7 +16,9 @@ const app = createApp({
         'nav-bar': navBar,
         'foot-bar': footBar,
         'pet-page': petPage,
-        'product-page': productPage
+        'product-page': productPage,
+        'log-in-page': logInPage,
+        'enfermedades': enfermedades
     }
 });
 // Configura Vue Router
@@ -24,6 +28,8 @@ const router = createRouter({
       { path: '/', component: HomePage },
       { path: '/pet', component: petPage },
       { path: '/product', component: productPage },
+      { path: '/login', component: logInPage },
+      { path: '/enfe', component: enfermedades },
     ]
   });
   

@@ -10,6 +10,7 @@
         <a class="nav-link active" aria-current="page" href="#about">¿Quienes Somos?</a>
         <router-link class="nav-link" to="/pet">Mascotas</router-link>
         <router-link class="nav-link" to="/product">Productos</router-link>
+        <router-link class="nav-link" to="/login">Iniciar Sesión</router-link>
       </div>
     </div>
   </div>
