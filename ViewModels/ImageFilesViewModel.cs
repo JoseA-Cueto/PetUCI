@@ -10,5 +10,6 @@
         public int Size { get; set; }
         public DateTime CreateDate { get; set; }
         public int ProductId { get; set; }
+        public int PetId { get; set; }
     }
 }

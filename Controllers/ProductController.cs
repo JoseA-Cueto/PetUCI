@@ -152,7 +152,7 @@ namespace PetUci.Controllers
                 }
 
                 await _productService.DeleteProductAsync(id);
-                await _imageFileService.DeleteImageFileAsync(id);
+                await _imageFileService.DeleteImageFileAsync(existingImage.Id);
                 return Ok();
             }
             catch (Exception ex)

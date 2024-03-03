@@ -36,6 +36,7 @@ namespace PetUci.Context
                 .HasOne(i => i.Product)
                 .WithOne(p => p.ImageFile)
                 .HasForeignKey<ImageFiles>(i => i.ProductId)
+                .HasForeignKey<ImageFiles>(i=>i.PetId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()

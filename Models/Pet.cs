@@ -11,5 +11,6 @@ namespace PetUci.Models
         public string namePet { get; set; }
         public string sexo { get; set; }
         public string raza { get; set; }
+        public ImageFiles ImageFile { get; set; }
     }
 }

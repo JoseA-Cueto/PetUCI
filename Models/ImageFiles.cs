@@ -19,5 +19,8 @@ namespace PetUci.Models
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
+        public int PetId { get; set; }
+        [ForeignKey("PetId")]
+        public Pet Pet { get; set;}
     }
 }
