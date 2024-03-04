@@ -8,6 +8,7 @@ namespace PetUci.ViewModels
         public string name { get; set; }
         public string description { get; set; }
         public int idDisease { get; set; }
+        public string diseaseName { get; set; }
         public Disease disease { get; set; }
     }
 }
