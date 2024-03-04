@@ -94,3 +94,8 @@ export default {
   }
 }
 </script>
+<style>
+body{
+  background-image: url('../../assets/W2.jpg');
+}
+</style>

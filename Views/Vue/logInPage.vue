@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style>
+body{
+  background-image: url('../../assets/W1.jpg');
+}
 .login-container {
   display: flex;
   justify-content: center;

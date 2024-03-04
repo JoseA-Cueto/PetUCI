@@ -89,6 +89,9 @@ namespace PetUci.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhysicalPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -101,7 +104,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
+                    b.HasIndex("PetId")
                         .IsUnique();
 
                     b.ToTable("ImageFiles", (string)null);
@@ -280,11 +283,19 @@ namespace PetUci.Migrations
 
             modelBuilder.Entity("PetUci.Models.ImageFiles", b =>
                 {
-                    b.HasOne("PetUci.Models.Product", "Product")
+                    b.HasOne("PetUci.Models.Pet", "Pet")
                         .WithOne("ImageFile")
-                        .HasForeignKey("PetUci.Models.ImageFiles", "ProductId")
+                        .HasForeignKey("PetUci.Models.ImageFiles", "PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PetUci.Models.Product", "Product")
+                        .WithOne("ImageFile")
+                        .HasForeignKey("PetUci.Models.ImageFiles", "PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
 
                     b.Navigation("Product");
                 });
@@ -309,6 +320,12 @@ namespace PetUci.Migrations
                         .IsRequired();
 
                     b.Navigation("rolObj");
+                });
+
+            modelBuilder.Entity("PetUci.Models.Pet", b =>
+                {
+                    b.Navigation("ImageFile")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PetUci.Models.Product", b =>

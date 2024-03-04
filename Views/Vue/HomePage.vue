@@ -249,7 +249,7 @@
 
   </template>
   <style>
-    /*body{
-      background-color: #f3f7fa;
-    }*/
+    body{
+      background-image: url('../../assets/W2.jpg');
+    }
 </style>

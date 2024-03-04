@@ -12,5 +12,6 @@ namespace PetUci.InterfacesDataBase
         Task<ImageFiles> CreateImageFile(ImageFiles entity);
         Task<ImageFiles> GetImageFileByProductIdAsync(int productId);
         Task<ImageFiles> GetImageByProductIdAsync(int productId);
+        Task<ImageFiles> GetImageByPetIdAsync(int petId);
     }
 }

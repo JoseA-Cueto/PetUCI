@@ -66,5 +66,9 @@ namespace PetUci.Repositories
         {
             return await _context.ImageFiles.FirstOrDefaultAsync(f => f.ProductId == productId);
         }
+        public async Task<ImageFiles> GetImageByPetIdAsync (int petId)
+        {
+            return await _context.ImageFiles.FirstOrDefaultAsync(f => f.PetId == petId);
+        }
     }
 }
