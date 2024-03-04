@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetUci")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93c2d1f51632cf8f8b9c31a865f0d85564c7beae")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29438c843273c3cffa7b4feee74d1b66db7de1ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetUci")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetUci")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -244,6 +244,7 @@
     </div>
    
   </div>
+  <router-link to="/admin" class="btn btn-primary"> ir a la vista admin</router-link>
 </section>
 
 
