@@ -16,8 +16,11 @@ namespace PetUci.MappingProfile
             CreateMap<Pet, PetViewModel>();
             CreateMap<PetViewModel, Pet>();
 
-            CreateMap<User, UserViewModel>();
+            CreateMap<User, UserViewModel>()
+            .ForMember(dest => dest.rolId, opt => opt.MapFrom(src => src.rolObj.id))
+            .ForMember(dest => dest.rol, opt => opt.MapFrom(src => src.rolObj.nombreRol));
             CreateMap<UserViewModel, User>();
+
 
             CreateMap<Rol, RolViewModel>();
             CreateMap<RolViewModel, Rol>();
@@ -28,13 +31,18 @@ namespace PetUci.MappingProfile
             CreateMap<Disease, DiseaseViewModel>();
             CreateMap<DiseaseViewModel, Disease>();
 
-            CreateMap<Treatment, TreatmentViewModel>();
+            CreateMap<Treatment, TreatmentViewModel>()
+            .ForMember(dest => dest.idDisease, opt => opt.MapFrom(src => src.disease.Id))
+            .ForMember(dest => dest.disease, opt => opt.MapFrom(src => src.disease.name));
             CreateMap<TreatmentViewModel, Treatment>();
 
-            CreateMap<Forum, ForumViewModel>();
+            CreateMap<Forum, ForumViewModel>()
+            .ForMember(dest => dest.idUser, opt => opt.MapFrom(src => src.user.id));
             CreateMap<ForumViewModel, Forum>();
 
-            CreateMap<ImageFiles, ImageFilesViewModel>();
+            CreateMap<ImageFiles, ImageFilesViewModel>()
+             .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.id))
+             .ForMember(dest=> dest.PetId, opt => opt.MapFrom(src=>src.Pet.id));
             CreateMap<ImageFilesViewModel, ImageFiles>();
 
         }
