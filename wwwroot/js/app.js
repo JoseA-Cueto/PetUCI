@@ -13,6 +13,9 @@ import adminPetsPage from "../../Views/Vue/adminPetsPage.vue";
 import adminProductPage from "../../Views/Vue/adminProductPage.vue"
 import adminDiseasePage from "../../Views/Vue/adminDiseasePage.vue"
 import workingOnPage from "../../Views/Vue/workingOnPage.vue"
+import forumPage from "../../Views/Vue/forumPage.vue";
+
+
 
 const app = createApp({
     components:{
@@ -28,7 +31,8 @@ const app = createApp({
         'admin-pet-page' : adminPetsPage,
         'admin-product-page' : adminProductPage,
         'admin-disease-page': adminDiseasePage,
-        'working-on-page': workingOnPage
+        'working-on-page': workingOnPage,
+        'forum-page' :forumPage
     }
 });
 // Configura Vue Router
@@ -41,6 +45,7 @@ const router = createRouter({
       { path: '/login', component: logInPage },
       { path: '/enfe', component: enfermedades },
       { path: '/admin', component: adminPage },
+      { path: '/forum', component: forumPage },
     ]
   });
   
