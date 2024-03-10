@@ -31,10 +31,10 @@ namespace PetUci.Services
         public async Task<User> FindUserAsync(UserViewModel userViewModel)
         {
             // Encripta la contraseña proporcionada por el usuario
-            string encryptedPassword = _encryptionService.EncryptPassword(userViewModel.contraseña);
+            string encryptedPassword = _encryptionService.EncryptPassword(userViewModel.Contraseña);
 
 
-            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.nombre == userViewModel.nombre && u.contraseña == encryptedPassword && userViewModel.correoElectronico == u.correoElectronico);
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.Nombre == userViewModel.Nombre && u.Contraseña == encryptedPassword && userViewModel.CorreoElectronico == u.CorreoElectronico);
 
             return entity;
         }
@@ -49,13 +49,13 @@ namespace PetUci.Services
         public async Task AddUserAsync(UserViewModel userViewModel)
         {
             var user = _mapper.Map<User>(userViewModel);
-            user.contraseña = _encryptionService.EncryptPassword(user.contraseña);
+            user.Contraseña = _encryptionService.EncryptPassword(user.Contraseña);
             await _userRepository.AddUserAsync(user);
         }
 
         public async Task UpdateUserAsync(UserViewModel userViewModel)
         {
-            var existingUser = await _userRepository.GetUserByIdAsync(userViewModel.id);
+            var existingUser = await _userRepository.GetUserByIdAsync(userViewModel.Id);
             if (existingUser != null)
             {
                 _mapper.Map(userViewModel, existingUser);

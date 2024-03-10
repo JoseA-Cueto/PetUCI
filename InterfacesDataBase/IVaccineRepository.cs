@@ -8,7 +8,7 @@ namespace PetUci.InterfacesDataBase
     {
         Task<IEnumerable<Vaccine>> GetVaccinesAsync();
         Task<Vaccine> GetVaccineByIdAsync(int vaccineId);
-        Task<int> AddVaccineAsync(Vaccine vaccine);
+        Task AddVaccineAsync(Vaccine vaccine);
         Task UpdateVaccineAsync(Vaccine vaccine);
         Task DeleteVaccineAsync(int vaccineId);
     }

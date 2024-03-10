@@ -37,6 +37,8 @@ namespace PetUci.ServiceExtensions
             services.AddScoped<IVaccineRepository, VaccineRepository>();
             services.AddScoped<IVaccineService, VaccineService>();
 
+            services.AddScoped<ILogger, ConsoleLogger>();
+
 
 
         }

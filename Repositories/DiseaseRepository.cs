@@ -26,11 +26,11 @@ namespace PetUci.Repositories
             return await _context.Diseases.FindAsync(diseaseId);
         }
 
-        public async Task<int> AddDiseaseAsync(Disease disease)
+        public async Task AddDiseaseAsync(Disease disease)
         {
             await _context.Diseases.AddAsync(disease);
             await _context.SaveChangesAsync();
-            return disease.Id;
+           
         }
 
         public async Task UpdateDiseaseAsync(Disease disease)

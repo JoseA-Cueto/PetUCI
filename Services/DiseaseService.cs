@@ -25,7 +25,7 @@ namespace PetUci.Services
             return _diseaseRepository.GetDiseaseByIdAsync(diseaseId);
         }
 
-        public Task<int> AddDiseaseAsync(Disease disease)
+        public Task AddDiseaseAsync(Disease disease)
         {
             return _diseaseRepository.AddDiseaseAsync(disease);
         }

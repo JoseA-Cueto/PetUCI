@@ -7,11 +7,12 @@ namespace PetUci.Models
     public class Forum
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string comment { get; set; }
-        public int idUser { get; set; }
-        [ForeignKey("idUser")]
-        public User user { get; set; }
+        public string Comment { get; set; }
+
+        public int IdUser { get; set; }
+        [ForeignKey("IdUser")]
+        public User User { get; set; }
     }
 }

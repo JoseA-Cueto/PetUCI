@@ -5,12 +5,12 @@ namespace PetUci.Models
     public class Product
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string name { get; set; }
-        public string description { get; set; }
-        public double price { get; set; }
-        public int quantity { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public int Quantity { get; set; }
         public ImageFiles ImageFile { get; set; }
     }
 }

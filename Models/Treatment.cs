@@ -6,12 +6,14 @@ namespace PetUci.Models
     public class Treatment
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string name { get; set; }
-        public string description { get; set; }
-        public int idDisease { get; set; }
-        [ForeignKey("idDisease")]
-        public Disease disease { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }    
+        public int IdDisease { get; set; }
+        [ForeignKey("IdDisease")]
+        public Disease Disease { get; set; }
+
+
     }
 }

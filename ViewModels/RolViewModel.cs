@@ -4,8 +4,8 @@ namespace PetUci.ViewModels
 {
     public class RolViewModel
     {
-        public int id { get; set; }
-        public string nombreRol { get; set; }
-        public ICollection<User> usuarios { get; set; }
+        public int Id { get; set; }
+        public string NombreRol { get; set; }
+        public ICollection<User> Usuarios { get; set; }
     }
 }

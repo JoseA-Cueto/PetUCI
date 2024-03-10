@@ -16,11 +16,11 @@ namespace PetUci.Repositories
             _context = context;
         }
 
-        public async Task<int> AddForumAsync(Forum forum)
+        public async Task AddForumAsync(Forum forum)
         {
             _context.Forums.Add(forum);
             await _context.SaveChangesAsync();
-            return forum.id;
+         
         }
 
         public async Task DeleteForumAsync(int forumId)

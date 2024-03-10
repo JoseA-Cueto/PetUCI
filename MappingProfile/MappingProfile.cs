@@ -17,8 +17,8 @@ namespace PetUci.MappingProfile
             CreateMap<PetViewModel, Pet>();
 
             CreateMap<User, UserViewModel>()
-            .ForMember(dest => dest.rolId, opt => opt.MapFrom(src => src.rolObj.id))
-            .ForMember(dest => dest.rol, opt => opt.MapFrom(src => src.rolObj.nombreRol));
+            .ForMember(dest => dest.RolId, opt => opt.MapFrom(src => src.RolObj.Id))
+            .ForMember(dest => dest.Rol, opt => opt.MapFrom(src => src.RolObj.NombreRol));
             CreateMap<UserViewModel, User>();
 
 
@@ -32,17 +32,17 @@ namespace PetUci.MappingProfile
             CreateMap<DiseaseViewModel, Disease>();
 
             CreateMap<Treatment, TreatmentViewModel>()
-            .ForMember(dest => dest.idDisease, opt => opt.MapFrom(src => src.disease.Id))
-            .ForMember(dest => dest.disease, opt => opt.MapFrom(src => src.disease.name));
+            .ForMember(dest => dest.IdDisease, opt => opt.MapFrom(src => src.Disease.Id))
+            .ForMember(dest => dest.Disease, opt => opt.MapFrom(src => src.Disease.Name));
             CreateMap<TreatmentViewModel, Treatment>();
 
             CreateMap<Forum, ForumViewModel>()
-            .ForMember(dest => dest.idUser, opt => opt.MapFrom(src => src.user.id));
+            .ForMember(dest => dest.IdUser, opt => opt.MapFrom(src => src.User.Id));
             CreateMap<ForumViewModel, Forum>();
 
             CreateMap<ImageFiles, ImageFilesViewModel>()
-             .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.id))
-             .ForMember(dest=> dest.PetId, opt => opt.MapFrom(src=>src.Pet.id));
+             .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
+             .ForMember(dest=> dest.PetId, opt => opt.MapFrom(src=>src.Pet.Id));
             CreateMap<ImageFilesViewModel, ImageFiles>();
 
         }

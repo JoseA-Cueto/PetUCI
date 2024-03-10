@@ -5,9 +5,11 @@ namespace PetUci.Models
     public class Vaccine
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public string name { get; set; }
-        public DateTime fecha { get; set; }
+        public string Name { get; set; }
+        public DateTime Fecha { get; set; }
+        public int IdPet { get; set; }
+        public Pet Pet { get; set; }
     }
 }

@@ -37,7 +37,7 @@ namespace PetUci.Services
 
         public async Task UpdatePetAsync(PetViewModel petViewModel)
         {
-            var existingPet = await _petRepository.GetPetByIdAsync(petViewModel.id);
+            var existingPet = await _petRepository.GetPetByIdAsync(petViewModel.Id);
             if (existingPet != null)
             {
                 _mapper.Map(petViewModel, existingPet);

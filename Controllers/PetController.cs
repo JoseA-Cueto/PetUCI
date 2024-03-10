@@ -40,7 +40,7 @@ namespace PetUci.Controllers
                     {
                         try
                         {
-                            var imageFile = await _imageFileService.GetImageByPetIdAsync(pet.id);
+                            var imageFile = await _imageFileService.GetImageByPetIdAsync(pet.Id);
                             if (imageFile != null)
                             {
                                 pet.ImagePath = imageFile.Path;
@@ -49,7 +49,7 @@ namespace PetUci.Controllers
                         catch (Exception ex)
                         {
                             // Manejo de errores si es necesario
-                            _logger.LogError(ex, $"Error al asignar el Path de imagen para el mascota {pet.id}");
+                            _logger.LogError(ex, $"Error al asignar el Path de imagen para el mascota {pet.Id}");
                         }
                     }
 
@@ -72,7 +72,7 @@ namespace PetUci.Controllers
                     var pet = await _petService.GetPetByIdAsync(id);
                     if (pet != null)
                     {
-                        var imageFile = await _imageFileService.GetImageByPetIdAsync(pet.id);
+                        var imageFile = await _imageFileService.GetImageByPetIdAsync(pet.Id);
                         if (imageFile != null)
                         {
                             pet.ImagePath = imageFile.Path;

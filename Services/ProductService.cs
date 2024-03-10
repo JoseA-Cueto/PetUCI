@@ -36,7 +36,7 @@ namespace PetUci.Services
             var product = await _productRepository.GetProductByIdAsync(productId);
             if (product != null)
             {
-                product.quantity += quantityChange;
+                product.Quantity += quantityChange;
                 await _productRepository.UpdateProductAsync(product);
             }
             else
@@ -53,7 +53,7 @@ namespace PetUci.Services
         }
         public async Task UpdateProductAsync(ProductViewModel productViewModel)
         {
-            var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.id);
+            var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.Id);
 
             if (existingProduct == null)
             {

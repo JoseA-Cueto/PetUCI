@@ -58,8 +58,8 @@ namespace PetUci.Controllers
         {
             try
             {
-                var newTreatmentId = await _treatmentService.AddTreatmentAsync(treatmentViewModel);
-                return CreatedAtAction(nameof(GetTreatment), new { id = newTreatmentId }, newTreatmentId);
+                await _treatmentService.AddTreatmentAsync(treatmentViewModel);
+                return StatusCode(201);
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace PetUci.Controllers
         {
             try
             {
-                if (id != treatmentViewModel.id)
+                if (id != treatmentViewModel.Id)
                 {
                     return BadRequest();
                 }

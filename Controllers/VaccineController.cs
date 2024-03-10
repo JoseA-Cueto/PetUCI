@@ -66,8 +66,8 @@ namespace PetUci.Controllers
         {
             try
             {
-                var id = await _vaccineService.AddVaccineAsync(vaccineViewModel);
-                return CreatedAtAction(nameof(GetVaccineById), new { id = id }, null);
+               await _vaccineService.AddVaccineAsync(vaccineViewModel);
+                return StatusCode(201);
             }
             catch (Exception ex)
             {

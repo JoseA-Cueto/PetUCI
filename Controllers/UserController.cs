@@ -51,10 +51,10 @@ namespace PetUci.Controllers
                     var keyBytes = Encoding.ASCII.GetBytes(secretKey);
                     var claims = new ClaimsIdentity();
 
-                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.nombre));
+                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Nombre));
 
                     // Agregar el rol del usuario como un claim
-                    claims.AddClaim(new Claim(ClaimTypes.Role, user.rol));
+                    claims.AddClaim(new Claim(ClaimTypes.Role, user.Rol));
 
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {

@@ -32,10 +32,10 @@ namespace PetUci.Services
             return _mapper.Map<VaccineViewModel>(vaccine);
         }
 
-        public async Task<int> AddVaccineAsync(VaccineViewModel vaccineViewModel)
+        public async Task AddVaccineAsync(VaccineViewModel vaccineViewModel)
         {
             var vaccine = _mapper.Map<Vaccine>(vaccineViewModel);
-            return await _vaccineRepository.AddVaccineAsync(vaccine);
+             await _vaccineRepository.AddVaccineAsync(vaccine);
         }
 
         public async Task UpdateVaccineAsync(VaccineViewModel vaccineViewModel)

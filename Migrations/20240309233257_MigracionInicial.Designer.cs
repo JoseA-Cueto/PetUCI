@@ -12,8 +12,8 @@ using PetUci.Context;
 namespace PetUci.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240302173153_UpdateDatabase1")]
-    partial class UpdateDatabase1
+    [Migration("20240309233257_MigracionInicial")]
+    partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,38 +32,38 @@ namespace PetUci.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("name")
+                    b.Property<int>("IdTreatment")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("treatmentid")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("treatmentid");
+                    b.HasIndex("IdTreatment");
 
                     b.ToTable("Diseases", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Forum", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("comment")
+                    b.Property<string>("Comment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idUser")
+                    b.Property<int>("IdUser")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("idUser");
+                    b.HasIndex("IdUser");
 
                     b.ToTable("Forums", (string)null);
                 });
@@ -91,6 +91,9 @@ namespace PetUci.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhysicalPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -103,7 +106,7 @@ namespace PetUci.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
+                    b.HasIndex("PetId")
                         .IsUnique();
 
                     b.ToTable("ImageFiles", (string)null);
@@ -111,206 +114,220 @@ namespace PetUci.Migrations
 
             modelBuilder.Entity("PetUci.Models.Pet", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("namePet")
+                    b.Property<string>("NamePet")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("raza")
+                    b.Property<string>("Raza")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("sexo")
+                    b.Property<string>("Sexo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Product", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("price")
+                    b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("quantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Rol", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("nombreRol")
+                    b.Property<string>("NombreRol")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Treatment", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idDisease")
+                    b.Property<int>("IdDisease")
                         .HasColumnType("int");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("idDisease");
+                    b.HasIndex("IdDisease");
 
                     b.ToTable("Treatments", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.User", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("contraseña")
+                    b.Property<string>("Contraseña")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("correoElectronico")
+                    b.Property<string>("CorreoElectronico")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("rol")
+                    b.Property<string>("Rol")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("rolId")
+                    b.Property<int>("RolId")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("rolId");
+                    b.HasIndex("RolId");
 
                     b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Vaccine", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("fecha")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Vaccines", (string)null);
                 });
 
             modelBuilder.Entity("PetUci.Models.Disease", b =>
                 {
-                    b.HasOne("PetUci.Models.Treatment", "treatment")
+                    b.HasOne("PetUci.Models.Treatment", "Treatment")
                         .WithMany()
-                        .HasForeignKey("treatmentid")
+                        .HasForeignKey("IdTreatment")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("treatment");
+                    b.Navigation("Treatment");
                 });
 
             modelBuilder.Entity("PetUci.Models.Forum", b =>
                 {
-                    b.HasOne("PetUci.Models.User", "user")
+                    b.HasOne("PetUci.Models.User", "User")
                         .WithMany("Forums")
-                        .HasForeignKey("idUser")
+                        .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PetUci.Models.ImageFiles", b =>
                 {
-                    b.HasOne("PetUci.Models.Product", "Product")
+                    b.HasOne("PetUci.Models.Pet", "Pet")
                         .WithOne("ImageFile")
-                        .HasForeignKey("PetUci.Models.ImageFiles", "ProductId")
+                        .HasForeignKey("PetUci.Models.ImageFiles", "PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PetUci.Models.Product", "Product")
+                        .WithOne("ImageFile")
+                        .HasForeignKey("PetUci.Models.ImageFiles", "PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("PetUci.Models.Treatment", b =>
                 {
-                    b.HasOne("PetUci.Models.Disease", "disease")
+                    b.HasOne("PetUci.Models.Disease", "Disease")
                         .WithMany()
-                        .HasForeignKey("idDisease")
+                        .HasForeignKey("IdDisease")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("disease");
+                    b.Navigation("Disease");
                 });
 
             modelBuilder.Entity("PetUci.Models.User", b =>
                 {
-                    b.HasOne("PetUci.Models.Rol", "rolObj")
-                        .WithMany("usuarios")
-                        .HasForeignKey("rolId")
+                    b.HasOne("PetUci.Models.Rol", "RolObj")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("rolObj");
+                    b.Navigation("RolObj");
+                });
+
+            modelBuilder.Entity("PetUci.Models.Pet", b =>
+                {
+                    b.Navigation("ImageFile")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PetUci.Models.Product", b =>
@@ -321,7 +338,7 @@ namespace PetUci.Migrations
 
             modelBuilder.Entity("PetUci.Models.Rol", b =>
                 {
-                    b.Navigation("usuarios");
+                    b.Navigation("Usuarios");
                 });
 
             modelBuilder.Entity("PetUci.Models.User", b =>

@@ -4,9 +4,9 @@ namespace PetUci.ViewModels
 {
     public class ForumViewModel
     {
-        public int id { get; set; }
-        public string comment { get; set; }
-        public int idUser { get; set; }
-        public User user { get; set; }
+        public int Id { get; set; }
+        public string Comment { get; set; }
+        public int IdUser { get; set; }
+        public User User { get; set; }
     }
 }

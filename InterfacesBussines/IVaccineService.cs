@@ -8,7 +8,7 @@ namespace PetUci.InterfacesBussines
     {
         Task<IEnumerable<VaccineViewModel>> GetVaccinesAsync();
         Task<VaccineViewModel> GetVaccineByIdAsync(int vaccineId);
-        Task<int> AddVaccineAsync(VaccineViewModel vaccineViewModel);
+        Task AddVaccineAsync(VaccineViewModel vaccineViewModel);
         Task UpdateVaccineAsync(VaccineViewModel vaccineViewModel);
         Task DeleteVaccineAsync(int vaccineId);
     }

@@ -26,11 +26,11 @@ namespace PetUci.Repositories
             return await _context.Vaccines.FindAsync(vaccineId);
         }
 
-        public async Task<int> AddVaccineAsync(Vaccine vaccine)
+        public async Task AddVaccineAsync(Vaccine vaccine)
         {
             _context.Vaccines.Add(vaccine);
             await _context.SaveChangesAsync();
-            return vaccine.id;
+        
         }
 
         public async Task UpdateVaccineAsync(Vaccine vaccine)

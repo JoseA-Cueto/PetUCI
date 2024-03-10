@@ -8,7 +8,7 @@ namespace PetUci.InterfacesDataBase
     {
         Task<IEnumerable<Forum>> GetForumsAsync();
         Task<Forum> GetForumByIdAsync(int forumId);
-        Task<int> AddForumAsync(Forum forum);
+        Task AddForumAsync(Forum forum);
         Task UpdateForumAsync(Forum forum);
         Task DeleteForumAsync(int forumId);
     }

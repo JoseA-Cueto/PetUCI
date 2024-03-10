@@ -28,7 +28,7 @@ namespace PetUci.Repositories
         {
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
-            return product.id;
+            return product.Id;
         }
 
         public async Task UpdateProductAsync(Product product)

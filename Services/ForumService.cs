@@ -31,10 +31,10 @@ namespace PetUci.Services
             return _mapper.Map<ForumViewModel>(forum);
         }
 
-        public async Task<int> AddForumAsync(ForumViewModel forumViewModel)
+        public async Task AddForumAsync(ForumViewModel forumViewModel)
         {
             var forum = _mapper.Map<Forum>(forumViewModel);
-            return await _forumRepository.AddForumAsync(forum);
+            await _forumRepository.AddForumAsync(forum);
         }
 
         public async Task UpdateForumAsync(ForumViewModel forumViewModel)

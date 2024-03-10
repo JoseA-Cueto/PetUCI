@@ -59,7 +59,7 @@ namespace PetUci.Services
                     ContentType = "data:" + file.ContentType,
                     Size = (int)file.Length,
                     Name = fileNameResult,
-                    ProductId = petViewModel.id,
+                    PetId = petViewModel.Id,
                 });
 
                 return imageFile;
@@ -107,7 +107,7 @@ namespace PetUci.Services
                     ContentType = "data:" + file.ContentType,
                     Size = (int)file.Length,
                     Name = fileNameResult,
-                    ProductId = product.id,
+                    ProductId = product.Id,
                 });
 
                 return imageFile;
@@ -124,7 +124,7 @@ namespace PetUci.Services
         public async Task UpdateImageFile(ProductViewModel productViewModel)
         {
 
-            var imageFile = await _repository.GetImageFileByProductIdAsync(productViewModel.id);
+            var imageFile = await _repository.GetImageFileByProductIdAsync(productViewModel.Id);
 
             if (imageFile == null)
             {
@@ -153,7 +153,7 @@ namespace PetUci.Services
         public async Task UpdateImageFileByPet(PetViewModel petViewModel)
         {
 
-            var imageFile = await _repository.GetImageByPetIdAsync(petViewModel.id);
+            var imageFile = await _repository.GetImageByPetIdAsync(petViewModel.Id);
 
             if (imageFile == null)
             {

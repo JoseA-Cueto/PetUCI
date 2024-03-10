@@ -66,8 +66,8 @@ namespace PetUci.Controllers
         {
             try
             {
-                var id = await _forumService.AddForumAsync(forumViewModel);
-                return CreatedAtAction(nameof(GetForumById), new { id = id }, null);
+                 await _forumService.AddForumAsync(forumViewModel);
+                return StatusCode(201);
             }
             catch (Exception ex)
             {

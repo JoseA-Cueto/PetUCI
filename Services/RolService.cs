@@ -39,7 +39,7 @@ namespace PetUci.Services
 
         public async Task UpdateRolAsync(RolViewModel rolViewModel)
         {
-            var existingRol = await _rolRepository.GetRolByIdAsync(rolViewModel.id);
+            var existingRol = await _rolRepository.GetRolByIdAsync(rolViewModel.Id);
             if (existingRol != null)
             {
                 _mapper.Map(rolViewModel, existingRol);

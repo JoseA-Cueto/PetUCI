@@ -8,7 +8,7 @@ namespace PetUci.InterfacesBussines
     {
         Task<IEnumerable<TreatmentViewModel>> GetTreatmentsAsync();
         Task<TreatmentViewModel> GetTreatmentByIdAsync(int treatmentId);
-        Task<int> AddTreatmentAsync(TreatmentViewModel treatmentViewModel);
+        Task AddTreatmentAsync(TreatmentViewModel treatmentViewModel);
         Task UpdateTreatmentAsync(TreatmentViewModel treatmentViewModel);
         Task DeleteTreatmentAsync(int treatmentId);
     }

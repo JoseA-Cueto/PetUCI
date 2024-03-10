@@ -40,21 +40,21 @@ namespace PetUci.Context
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()
-                .HasOne(u => u.rolObj)
-                .WithMany(r => r.usuarios)
-                .HasForeignKey(u => u.rolId)
+                .HasOne(u => u.RolObj)
+                .WithMany(r => r.Usuarios)
+                .HasForeignKey(u => u.RolId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Forum>()
-                .HasOne(f => f.user)
+                .HasOne(f => f.User)
                 .WithMany(u => u.Forums)
-                .HasForeignKey(f => f.idUser)
+                .HasForeignKey(f => f.IdUser)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Treatment>()
-         .HasOne(t => t.disease)
+         .HasOne(t => t.Disease)
          .WithMany()
-         .HasForeignKey(t => t.idDisease)
+         .HasForeignKey(t => t.IdDisease)
          .OnDelete(DeleteBehavior.Restrict);
         }
     }

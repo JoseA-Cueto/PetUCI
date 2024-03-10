@@ -32,15 +32,15 @@ namespace PetUci.Services
             return _mapper.Map<TreatmentViewModel>(treatment);
         }
 
-        public async Task<int> AddTreatmentAsync(TreatmentViewModel treatmentViewModel)
+        public async Task AddTreatmentAsync(TreatmentViewModel treatmentViewModel)
         {
             var treatment = _mapper.Map<Treatment>(treatmentViewModel);
-            return await _treatmentRepository.AddTreatmentAsync(treatment);
+             await _treatmentRepository.AddTreatmentAsync(treatment);
         }
 
         public async Task UpdateTreatmentAsync(TreatmentViewModel treatmentViewModel)
         {
-            var existingTreatment = await _treatmentRepository.GetTreatmentByIdAsync(treatmentViewModel.id);
+            var existingTreatment = await _treatmentRepository.GetTreatmentByIdAsync(treatmentViewModel.Id);
             if (existingTreatment != null)
             {
                 _mapper.Map(treatmentViewModel, existingTreatment);

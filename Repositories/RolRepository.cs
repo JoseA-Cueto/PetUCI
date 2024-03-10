@@ -26,11 +26,11 @@ namespace PetUci.Repositories
             return await _context.Roles.FindAsync(rolId);
         }
 
-        public async Task<int> AddRolAsync(Rol rol)
+        public async Task AddRolAsync(Rol rol)
         {
             _context.Roles.Add(rol);
             await _context.SaveChangesAsync();
-            return rol.id;
+           
         }
 
         public async Task UpdateRolAsync(Rol rol)

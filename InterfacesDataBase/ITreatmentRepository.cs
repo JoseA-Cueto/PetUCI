@@ -8,7 +8,7 @@ namespace PetUci.InterfacesDataBase
     {
         Task<IEnumerable<Treatment>> GetTreatmentsAsync();
         Task<Treatment> GetTreatmentByIdAsync(int treatmentId);
-        Task<int> AddTreatmentAsync(Treatment treatment);
+        Task AddTreatmentAsync(Treatment treatment);
         Task UpdateTreatmentAsync(Treatment treatment);
         Task DeleteTreatmentAsync(int treatmentId);
     }

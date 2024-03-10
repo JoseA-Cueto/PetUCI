@@ -8,7 +8,7 @@ namespace PetUci.InterfacesBussines
     {
         Task<IEnumerable<ForumViewModel>> GetForumsAsync();
         Task<ForumViewModel> GetForumByIdAsync(int forumId);
-        Task<int> AddForumAsync(ForumViewModel forumViewModel);
+        Task AddForumAsync(ForumViewModel forumViewModel);
         Task UpdateForumAsync(ForumViewModel forumViewModel);
         Task DeleteForumAsync(int forumId);
     }

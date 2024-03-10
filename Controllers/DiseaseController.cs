@@ -73,8 +73,8 @@ namespace PetUci.Controllers
                 // Mapear DiseaseViewModel a Disease
                 var disease = _mapper.Map<Disease>(diseaseViewModel);
 
-                var id = await _diseaseService.AddDiseaseAsync(disease);
-                return CreatedAtAction(nameof(GetDiseaseById), new { id = id }, null);
+                 await _diseaseService.AddDiseaseAsync(disease);
+                return StatusCode(201);
             }
             catch (Exception ex)
             {

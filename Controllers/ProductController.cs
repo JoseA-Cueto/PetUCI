@@ -31,7 +31,7 @@ namespace PetUci.Controllers
                 {
                     try
                     {
-                        var imageFile = await _imageFileService.GetImageByProductIdAsync(product.id);
+                        var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
                         if (imageFile != null)
                         {
                             product.ImagePath = imageFile.Path;
@@ -40,7 +40,7 @@ namespace PetUci.Controllers
                     catch (Exception ex)
                     {
                         // Manejo de errores si es necesario
-                        _logger.LogError(ex, $"Error al asignar el Path de imagen para el producto {product.id}");
+                        _logger.LogError(ex, $"Error al asignar el Path de imagen para el producto {product.Id}");
                     }
                 }
 
@@ -63,7 +63,7 @@ namespace PetUci.Controllers
                 var product = await _productService.GetProductByIdAsync(id);
                 if (product != null)
                 {
-                    var imageFile = await _imageFileService.GetImageByProductIdAsync(product.id);
+                    var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
                     if (imageFile != null)
                     {
                         product.ImagePath = imageFile.Path;
@@ -81,7 +81,7 @@ namespace PetUci.Controllers
                 return StatusCode(500);
             }
         }
-        [Authorize]
+        
         [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -97,7 +97,7 @@ namespace PetUci.Controllers
 
 
                 var productId = await _productService.AddProductAsync(productViewModel);
-                productViewModel.id = productId;
+                productViewModel.Id = productId;
                 await _imageFileService.CreateImageFile(productViewModel);
                 return StatusCode(201);
 
@@ -108,7 +108,7 @@ namespace PetUci.Controllers
                 return StatusCode(500);
             }
         }
-        [Authorize]
+        
         [HttpPut("UpdateProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -135,7 +135,7 @@ namespace PetUci.Controllers
         }
 
 
-        [Authorize]
+       
         [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

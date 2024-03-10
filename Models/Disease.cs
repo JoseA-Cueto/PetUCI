@@ -8,8 +8,12 @@ namespace PetUci.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string name { get; set; }    
-        public Treatment treatment { get; set; }
+        public string Name { get; set; }
+    
+        public int IdTreatment { get; set; }
+        [ForeignKey("IdTreatment")]
+        public Treatment Treatment { get; set; }
+
 
     }
 }
