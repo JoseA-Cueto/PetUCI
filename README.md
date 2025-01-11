@@ -24,7 +24,7 @@ API Documentation: Swagger
 
 ## Installation and Setup
 ## Clone the repository:
-git clone https://github.com/yourusername/repository-name.git
+git clone https://github.com/JoseA-Cueto/PetUCI.git
 ## Install backend dependencies:
 dotnet restore
 ## Install frontend dependencies:
