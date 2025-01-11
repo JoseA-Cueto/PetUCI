@@ -1,1 +1,1 @@
-Agencia de adopcion de mascota y compra d productos para mascotas
+This project aims to create a comprehensive web application for a pet adoption agency and an online store for pet products. Utilizing .NET 6 for the backend and Vue.jsfor the frontend, the application offers a seamless user experience and efficient performance.
